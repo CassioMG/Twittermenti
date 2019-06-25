@@ -17,8 +17,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // test commit
-        
     }
 
     @IBAction func predictPressed(_ sender: Any) {
