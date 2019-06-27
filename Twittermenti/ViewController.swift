@@ -8,7 +8,7 @@
 
 import UIKit
 import SwifteriOS
-// TODO: use SVProgressHUD to give user feedback
+import SVProgressHUD
 
 class ViewController: UIViewController {
     
@@ -75,6 +75,8 @@ class ViewController: UIViewController {
             return updateUI(with: 0)
         }
         
+        SVProgressHUD.show()
+        
         swifter.searchTweet(using: textField.text!, lang: kTweetsLanguage, count: kTweetsCount, tweetMode: .extended, success: { (jsonResults, jsonMetada) in
             
             if let classifierInputs = jsonResults.array?.compactMap({ (jsonTweet) -> TwittermentiClassifierInput? in
@@ -88,8 +90,11 @@ class ViewController: UIViewController {
                 self.makePrediction(with: classifierInputs)
             }
             
+            SVProgressHUD.dismiss()
+            
         }) { (error) in
             print("Error searching for tweets: ", error)
+            SVProgressHUD.dismiss()
         }
     }
     
@@ -175,7 +180,6 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
             
         }, completion: nil)
-        
     }
     
     
