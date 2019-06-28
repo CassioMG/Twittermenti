@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var sentimentLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -127,7 +128,7 @@ class ViewController: UIViewController {
     
     private func updateUI (with sentimentScore: Int) {
         
-        print("FINAL SCORE: ", sentimentScore)
+        scoreLabel.text = "Score: \(sentimentScore)"
         
         switch sentimentScore {
             
